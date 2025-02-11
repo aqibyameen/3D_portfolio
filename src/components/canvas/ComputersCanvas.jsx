@@ -1,8 +1,10 @@
 import {Suspense,useEffect,useState} from 'react'
 import { Canvas } from '@react-three/fiber'
-import { Html, OrbitControls,Preload,useGLTF } from '@react-three/drei'
+import {  OrbitControls,Preload,useGLTF } from '@react-three/drei'
 import CanvasLoader from '../Loader'
-// import { PointLight } from 'three'
+
+
+
 const Computers = ({isMobile}) => {
   const computer = useGLTF('./desktop_pc/scene.gltf')
   return (
@@ -28,6 +30,7 @@ const Computers = ({isMobile}) => {
   )
 
 }
+
 const ComputersCanvas=()=>{
  const [isMobile,setIsMobile]= useState(false)
  useEffect(()=>{
@@ -38,13 +41,15 @@ const ComputersCanvas=()=>{
   }
   mediaQuery.addEventListener('change',handleMediaQueryChange)
 
-  return ()=>{
+  return()=>{
    mediaQuery.removeEventListener('change',handleMediaQueryChange)
+   
   }
 
- },[])
+ },[window.screen.width])
 
   return (
+    
     <Canvas
       frameloop='demand'
       shadows
@@ -65,8 +70,8 @@ const ComputersCanvas=()=>{
       <Preload all />
       
 
-    </Canvas>
-  );
+    </Canvas>)
+  ;
 }
 
 export default ComputersCanvas

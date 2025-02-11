@@ -22,7 +22,7 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    emailjs.send("service_2xbt305","template_kv2nzog",{
+    emailjs.send("service_2xbt305","template_jp7ynp5",{
       from_name:form.name,
       from_email:form.email,
       to_email:"aqibyameen644@gmail.com",

@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import {About,Contact,Experience,Feedbacks,Hero,Navbar,Tech,Works,StarsCanvas} from './components'
+import Social from './components/Social'
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,7 +19,9 @@ const App = () => {
      <Contact />
       <StarsCanvas />
      </div>
+     <Social />
     </div>
+
     </BrowserRouter>
   )
 }

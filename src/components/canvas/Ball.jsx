@@ -1,15 +1,13 @@
 import { Suspense } from "react"
 import React from 'react'
-import { Canvas } from "@react-three/fiber"
+import { Canvas, useThree } from "@react-three/fiber"
 import { Decal ,Float,OrbitControls,Preload,useTexture } from "@react-three/drei"
 import CanvasLoader from '../Loader'
-// import { AmbientLight } from "three/webgpu"
+
 
 
 const Ball = (props) => {
-  console.log(props)
   const [decal]= useTexture([props.imgUrl])
-  console.log(decal)
 
   return (
     
@@ -35,23 +33,32 @@ const Ball = (props) => {
 
 
 const BallCanvas=({icon})=>{
+
+
   return(
-    <Canvas
+    <Canvas 
     frameloop='demand'
-    
-    
-    gl={{ preserveDrawingBuffer: true }}
-  >
-        <Suspense fallback={<CanvasLoader />}>
-      <OrbitControls
-        enableZoom={false}
+    gl={{ preserveDrawingBuffer: true}} 
+
        
+    dpr={[1,2]}
+
+  >
+    
+
+   
+        <Suspense fallback={<CanvasLoader />} > 
+      <OrbitControls 
+         enableZoom={false}
+      
+       
+      
       />
       
       <Ball imgUrl={icon}  />
     </Suspense>
 
-    <Preload all />
+    <Preload  all  />
     
 
   </Canvas>
